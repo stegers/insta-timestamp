@@ -1,0 +1,17 @@
+javascript:(function() {
+  const matchingEl = document.querySelector('time._aaqe[datetime]');
+  if (matchingEl) {
+    const dateTime = new Date(matchingEl.getAttribute('datetime'));
+    const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric', timeZoneName: 'short' };
+    const naturalLanguageDateTime = dateTime.toLocaleDateString(undefined, options);
+    const tempInput = document.createElement('textarea');
+    tempInput.value = `${naturalLanguageDateTime} \n${window.location.href}`;
+    document.body.appendChild(tempInput);
+    tempInput.select();
+    document.execCommand('copy');
+    document.body.removeChild(tempInput);
+    alert(`Date and Time: ${naturalLanguageDateTime}\n\nURL: ${window.location.href}\n\nCopied to clipboard!`);
+  } else {
+    alert('Could not find matching HTML code.');
+  }
+})();
