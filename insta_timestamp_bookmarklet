@@ -1,5 +1,5 @@
 javascript:(function() {
-  const matchingEl = document.querySelector('time._aaqe[datetime]');
+  const matchingEl = document.querySelector('time._aaqe[datetime], time._ac0t[datetime]');
   if (matchingEl) {
     const dateTime = new Date(matchingEl.getAttribute('datetime'));
     const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric', timeZoneName: 'short' };
