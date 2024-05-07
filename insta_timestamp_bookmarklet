@@ -1,8 +1,16 @@
 javascript:(function() {
-  const matchingEl = document.querySelector('time._aaqe[datetime], time._ac0t[datetime]');
+  const allTimeElements = document.querySelectorAll('time');
+  let matchingEl = null;
+
+  allTimeElements.forEach((timeElement) => {
+    if (timeElement.hasAttribute('datetime')) {
+      matchingEl = timeElement;
+    }
+  });
+
   if (matchingEl) {
     const dateTime = new Date(matchingEl.getAttribute('datetime'));
-    const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric', timeZoneName: 'short' };
+    const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric', timeZoneName: 'short' };
     const naturalLanguageDateTime = dateTime.toLocaleDateString(undefined, options);
     const tempInput = document.createElement('textarea');
     tempInput.value = `${naturalLanguageDateTime} \n${window.location.href}`;
